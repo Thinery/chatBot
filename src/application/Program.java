@@ -10,17 +10,24 @@ public class Program {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Bem vindo ao chatbot do SUS!");
-		System.out.print("Informe o seu cpf: ");
-		String cpf = sc.nextLine();
+		System.out.print("Informe o seu cpf: ");	
 		
-		
-		System.out.println(validaCPF(cpf));
-		
-		
+		//faz a validação do cpf
+		boolean result = false;
+		while (result != true) {
+			String cpf = sc.nextLine();
+			if(validaCpf(cpf) == true) {
+				break;
+			} else {
+				System.out.println("Esse não é um cpf valido, tente novamente...");
+				System.out.print("cpf: ");
+			}
+		}
+	
 		sc.close();
 	}
 
-	public static boolean validaCPF(String cpf) {
+	public static boolean validaCpf(String cpf) {
 		Integer primeiroDigito;
 		Integer segundoDigito;
 		int soma = 0, numero = 0, peso;
