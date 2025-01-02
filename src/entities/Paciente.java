@@ -7,7 +7,6 @@ public class Paciente {
 	private Integer id;
 	private String nome;
 	private String cpf;
-	private Date dataNascimento;
 	
 	public Paciente() {		
 	}
@@ -16,7 +15,6 @@ public class Paciente {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
-		this.dataNascimento = data;
 	}
 
 	public Integer getId() {
@@ -43,13 +41,6 @@ public class Paciente {
 		this.cpf = cpf;
 	}
 
-	public Date getData() {
-		return dataNascimento;
-	}
-
-	public void setData(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
 	//metodos
 	
 	public void marcarConsulta() {
