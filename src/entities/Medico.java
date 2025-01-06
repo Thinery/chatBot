@@ -4,6 +4,7 @@ public class Medico {
 	
 	private Integer id;
 	private String nome;
+	private String crm;
 	
 	public Medico() {
 	}
@@ -28,9 +29,13 @@ public class Medico {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	//metodos
-	public void verificarDisponibilidade() {
-		
-	}
 	
+	
+	public String getCrm() {
+		return crm;
+	}
+
+	public void setCrm(String crm) {
+		this.crm = crm;
+	}
 }

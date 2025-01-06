@@ -41,17 +41,4 @@ public class Paciente {
 		this.cpf = cpf;
 	}
 
-	//metodos
-	
-	public void marcarConsulta() {
-		
-	}
-	
-	public void listarConsultas() {
-		
-	}
-	
-	public void cancelarConsulta() {
-		
-	}
 }

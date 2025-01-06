@@ -23,7 +23,12 @@ public class Program {
 				System.out.print("cpf: ");
 			}
 		}
-	
+		//vai ser implementado futuramente medico de cada posto de saude!
+		System.out.println("Digite a area do posto de saúde que deseja marcar consulta:\n 1.Zona Norte\n 2.Zona Sul\n 3.Zona Leste\n 4.Zona Oeste");
+		int zona = sc.nextInt();
+		
+		
+		
 		sc.close();
 	}
 
@@ -31,6 +36,11 @@ public class Program {
 		Integer primeiroDigito;
 		Integer segundoDigito;
 		int soma = 0, numero = 0, peso;
+		
+		//verifica se o tamanho do cpf condiz com um cpf verdadeiro
+		if(cpf.length()>14 || cpf.length()<11) {
+			return false;
+		}
 		
 		//remove todos caracteres nao numericos
 		cpf = cpf.replaceAll("\\D", "");	
