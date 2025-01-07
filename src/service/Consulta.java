@@ -1,48 +1,47 @@
 package service;
 
-import java.util.Date;
-
-import entities.Medico;
-import entities.Paciente;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Consulta {
-	private Integer id;
-	private Date dataHorario;
-	private String status;
-	private Paciente paciente;
-	private Medico medico;
+	private Integer idPaciente;
+	private Integer idMedico;
+	private static Integer id;
+	private LocalDate data;
+	private LocalTime hora;
 	
-	public Integer getId() {
+	public static Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Date getDataHorario() {
-		return dataHorario;
+	
+	public LocalDate getData() {
+		return data;
 	}
-	public void setDataHorario(Date dataHorario) {
-		this.dataHorario = dataHorario;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public Paciente getPaciente() {
-		return paciente;
-	}
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
-	public Medico getMedico() {
-		return medico;
-	}
-	public void setMedico(Medico medico) {
-		this.medico = medico;
+	public void setData(LocalDate data) {
+		this.data = data;
 	}
 	
-	
+	public LocalTime getHora() {
+		return hora;
+	}
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
+	}
+	public Integer getIdPaciente() {
+		return idPaciente;
+	}
+	public void setIdPaciente(Integer idPaciente) {
+		this.idPaciente = idPaciente;
+	}
+	public Integer getIdMedico() {
+		return idMedico;
+	}
+	public void setIdMedico(Integer idMedico) {
+		this.idMedico = idMedico;
+	}
+
 	
 }

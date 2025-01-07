@@ -1,12 +1,11 @@
 package service;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.util.Date;
+import java.sql.Time;
 
 import dataconection.DatabaseConnection;
-import entities.Medico;
-import entities.Paciente;
 
 public class ConsultaDAO {
 	
@@ -23,19 +22,29 @@ public class ConsultaDAO {
 			//preparedstatement que executa uma query
 			pstm = (PreparedStatement) conn.prepareStatement(sql);
 			//adiciona os valores que são esperados pela query
-			pstm.setInt(1, Paciente.getId());
-			pstm.setInt(2, Medico.getId());
+			pstm.setInt(1, 1);
+			pstm.setInt(2, 1);
 			pstm.setInt(3, Consulta.getId());
-			pstm.setDate(4, new Date(Consulta.getDataHorario().getDate()));
-			pstm.setDate(5, new Date(Consulta.getDataHorario().getTime()));
-			
+			// Converter LocalDate para java.sql.Date
+            pstm.setDate(4, Date.valueOf(consulta.getData()));
+            // Converter LocalTime (parte de LocalDateTime) para java.sql.Time
+            pstm.setTime(5, Time.valueOf(consulta.getHora()));
+            
 			//executa a query
 			pstm.execute();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			if(pstm != null) {
-				pstm.close();
+			//fechar as conexões
+			try {
+				if(pstm != null) {
+					pstm.close();
+				}
+				if(conn!=null) {
+					conn.close();
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
 		}
 	}
