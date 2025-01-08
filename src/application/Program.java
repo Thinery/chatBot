@@ -58,17 +58,16 @@ public class Program {
             // Cria uma nova consulta e define os valores
             ConsultaDAO consultadao = new ConsultaDAO();
             Consulta consulta = new Consulta();
-            consulta.setIdMedico(1); // Exemplo de ID fixo
-            consulta.setIdPaciente(1); // Exemplo de ID fixo
-            consulta.setId(idconsulta); // Exemplo de ID fixo
+            consulta.setIdMedico(1); // Exemplo de ID fixo porque só tem um paciente cadastrado por enquanto
+            consulta.setIdPaciente(1); // Exemplo de ID fixo porque só tem um medico cadastrado por enquanto
+            consulta.setId(idconsulta); // id gerado pela funçao
             consulta.setData(data);
             consulta.setHora(hora);
-
-            // Exemplo de salvar a consulta (DAO fictício)
 
             consultadao.save(consulta);
 
             System.out.println("Consulta registrada com sucesso!");
+            System.out.println("Código da consulta: "+idconsulta);
         } catch (Exception e) {
             System.out.println("Erro ao processar a data ou horário. Verifique o formato inserido.");
         }
