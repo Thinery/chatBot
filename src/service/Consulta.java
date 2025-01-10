@@ -6,11 +6,11 @@ import java.time.LocalTime;
 public class Consulta {
 	private Integer idPaciente;
 	private Integer idMedico;
-	private static Integer id;
+	private Integer id;
 	private LocalDate data;
 	private LocalTime hora;
 	
-	public static Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {

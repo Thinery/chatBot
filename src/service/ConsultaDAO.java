@@ -34,7 +34,7 @@ public class ConsultaDAO {
 			// adiciona os valores que são esperados pela query
 			pstm.setInt(1, 1);
 			pstm.setInt(2, 1);
-			pstm.setInt(3, Consulta.getId());
+			pstm.setInt(3, consulta.getId());
 			// Converter LocalDate para java.sql.Date
 			pstm.setDate(4, Date.valueOf(consulta.getData()));
 			// Converter LocalTime (parte de LocalDateTime) para java.sql.Time
