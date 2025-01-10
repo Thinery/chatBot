@@ -29,48 +29,72 @@ public class Program {
 				System.out.print("cpf: ");
 			}
 		}
-		int idconsulta = geraID();
 		
-		//vai ser implementado futuramente medico de cada posto de saude!
-		System.out.println("Digite a area do posto de saúde que deseja marcar consulta:\n 1.Zona Norte\n 2.Zona Sul\n 3.Zona Leste\n 4.Zona Oeste");
-		int zona = 5;
-		while (zona > 4 || zona < 1) {
-			zona = sc.nextInt();
-			if(zona > 4 || zona < 1) {
-				System.out.println("Zona invalida, digite novamente...");
+		System.out.println("O que deseja? \n1.Marcar consulta \n2.Ver Consultas marcadas \n3.Desmarcar consultas");
+		int opcao = 0;
+		while(opcao  > 3 || opcao < 1) {
+			opcao = sc.nextInt();
+			if(opcao  > 3 || opcao < 1) {
+				System.out.println("Valor invalido, digite novamente...");
 			}
 		}
-		System.out.println("Medicos disponiveis: ");
-		
-		
-		System.out.println("Escolha um dos dias disponiveis para marcar a consulta: ano-mes-dia ");
-		sc.nextLine();
-		String dataInput = sc.nextLine();
-		System.out.println("Escolha um dos horarios disponiveis para marcar a consulta: hora-minuto:");
-		String horaInput = sc.nextLine();
-		
-		
-		try {
-            // Converte a data e o horário para os formatos esperados
-            LocalDate data = LocalDate.parse(dataInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            LocalTime hora = LocalTime.parse(horaInput, DateTimeFormatter.ofPattern("HH:mm"));
+		//codigo que marca a consulta
+		if(opcao==1) {
+			int idconsulta = geraID();
+			//vai ser implementado futuramente medico de cada posto de saude!
+			System.out.println("Digite a area do posto de saúde que deseja marcar consulta: \n1.Zona Norte \n2.Zona Sul \n3.Zona Leste \n4.Zona Oeste");
+			int zona = 5;
+			while (zona > 4 || zona < 1) {
+				zona = sc.nextInt();
+				if(zona > 4 || zona < 1) {
+					System.out.println("Zona invalida, digite novamente...");
+				}
+			}
+			System.out.println("Medicos disponiveis: ");
+			
+			
+			System.out.println("Escolha um dos dias disponiveis para marcar a consulta: ano-mes-dia ");
+			sc.nextLine();
+			String dataInput = sc.nextLine();
+			System.out.println("Escolha um dos horarios disponiveis para marcar a consulta: hora-minuto:");
+			String horaInput = sc.nextLine();
+			
+			
+			try {
+	            // Converte a data e o horário para os formatos esperados
+	            LocalDate data = LocalDate.parse(dataInput, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	            LocalTime hora = LocalTime.parse(horaInput, DateTimeFormatter.ofPattern("HH:mm"));
 
-            // Cria uma nova consulta e define os valores
-            ConsultaDAO consultadao = new ConsultaDAO();
-            Consulta consulta = new Consulta();
-            consulta.setIdMedico(1); // Exemplo de ID fixo porque só tem um paciente cadastrado por enquanto
-            consulta.setIdPaciente(1); // Exemplo de ID fixo porque só tem um medico cadastrado por enquanto
-            consulta.setId(idconsulta); // id gerado pela funçao
-            consulta.setData(data);
-            consulta.setHora(hora);
+	            // Cria uma nova consulta e define os valores
+	            ConsultaDAO consultadao = new ConsultaDAO();
+	            Consulta consulta = new Consulta();
+	            consulta.setIdMedico(1); // Exemplo de ID fixo porque só tem um paciente cadastrado por enquanto
+	            consulta.setIdPaciente(1); // Exemplo de ID fixo porque só tem um medico cadastrado por enquanto
+	            consulta.setId(idconsulta); // id gerado pela funçao
+	            consulta.setData(data);
+	            consulta.setHora(hora);
 
-            consultadao.save(consulta);
+	            consultadao.save(consulta);
 
-            System.out.println("Consulta registrada com sucesso!");
-            System.out.println("Código da consulta: "+idconsulta);
-        } catch (Exception e) {
-            System.out.println("Erro ao processar a data ou horário. Verifique o formato inserido.");
-        }
+	            System.out.println("Consulta registrada com sucesso!");
+	            System.out.println("Código da consulta: "+idconsulta);
+	        } catch (Exception e) {
+	            System.out.println("Erro ao processar a data ou horário. Verifique o formato inserido.");
+	        }
+		}
+		
+		//codigo que mostra a consulta pro usuario
+		if(opcao==2) {
+			for(Consulta c : ConsultaDAO.getConsulta()) {
+				System.out.println("--------------------");
+				System.out.println("Consulta: "+c.getId());
+				System.out.println("Paciente: "+c.getIdPaciente());
+				System.out.println("Medico: "+c.getIdMedico());
+				System.out.println("Data: "+c.getData()+" Horario: "+c.getHora());
+				System.out.println("--------------------");
+				
+			}
+		}
 		
 		sc.close();
 	}
