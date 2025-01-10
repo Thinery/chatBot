@@ -95,6 +95,13 @@ public class Program {
 				
 			}
 		}
+		//codigo que deleta a consulta pelo idconsulta
+		if(opcao==3) {
+			System.out.println("Digite o numero da consulta que deseja apagar: ");
+			int deleteid = sc.nextInt();
+			ConsultaDAO.deleteByIdconsulta(deleteid);
+			System.out.println("consulta deletada com sucesso!");
+		}
 		
 		sc.close();
 	}

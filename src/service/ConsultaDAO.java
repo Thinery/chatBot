@@ -12,7 +12,10 @@ import dataconection.DatabaseConnection;
 
 public class ConsultaDAO {
 	/*
-	 * CRUD - CREATE - OK - INSERT READ - SELECT UPDATE - UPDATE DELETE - DELETE
+	 * CRUD - CREATE - OK - 
+	 * INSERT READ - OK -
+	 * SELECT UPDATE - 
+	 * UPDATE DELETE - DELETE - OK
 	 */
 
 	// metodo que cria uma consulta no banco de dados 'CREATE'
@@ -110,4 +113,32 @@ public class ConsultaDAO {
 		}
 		return consultas;
 	}
-}
+	
+	public static void deleteByIdconsulta(int id) {
+		String sql = "DELETE FROM consulta WHERE idconsulta = ?";
+				
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		
+		try {
+			conn = DatabaseConnection.getConnection();
+			pstm = conn.prepareStatement(sql);
+			
+			pstm.setInt(1, id);
+			pstm.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try{
+				if(pstm!=null) {
+					pstm.close();
+				}
+				if(conn!=null){
+					conn.close();
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+	}
+}}
